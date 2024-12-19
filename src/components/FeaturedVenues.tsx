@@ -15,7 +15,7 @@ const venues = [
     type: "Sports Venue",
     location: "Downtown",
     price: "$100/hour",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const venues = [
     type: "Event Center",
     location: "Midtown",
     price: "$500/day",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833",
   },
   {
     id: 3,
@@ -31,40 +31,45 @@ const venues = [
     type: "Hotel",
     location: "Uptown",
     price: "$200/night",
-    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742",
   },
 ];
 
 export const FeaturedVenues = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Featured Venues</h2>
+        <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          Featured Venues
+        </h2>
+        <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+          Discover our handpicked selection of premium venues for your next event
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {venues.map((venue) => (
-            <Card key={venue.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="aspect-video relative overflow-hidden">
+            <Card key={venue.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 border-0 bg-white/50 backdrop-blur-sm">
+              <div className="aspect-[4/3] relative overflow-hidden">
                 <img
                   src={venue.image}
                   alt={venue.name}
-                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               
               <CardHeader>
-                <CardTitle>{venue.name}</CardTitle>
-                <CardDescription>{venue.type} • {venue.location}</CardDescription>
+                <CardTitle className="text-xl font-semibold">{venue.name}</CardTitle>
+                <CardDescription className="text-gray-600">{venue.type} • {venue.location}</CardDescription>
               </CardHeader>
               
               <CardContent>
-                <p className="text-lg font-semibold text-primary">
+                <p className="text-lg font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {venue.price}
                 </p>
               </CardContent>
               
               <CardFooter>
-                <Button className="w-full">Book Now</Button>
+                <Button className="w-full bg-accent hover:bg-accent/90">Book Now</Button>
               </CardFooter>
             </Card>
           ))}
