@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
 export const Navbar = () => {
   return (
@@ -11,9 +18,28 @@ export const Navbar = () => {
         </Link>
         
         <div className="hidden md:flex items-center space-x-10">
-          <Link to="/venues" className="text-gray-700 hover:text-primary transition-colors font-medium">
-            Venues
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="ghost" 
+                className="font-medium flex items-center gap-2 hover:text-primary transition-colors"
+              >
+                Venues <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-white">
+              <DropdownMenuItem className="cursor-pointer">
+                <Link to="/venues/sports" className="w-full">Sports Venues</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                <Link to="/venues/events" className="w-full">Event Centers</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                <Link to="/venues/hotels" className="w-full">Hotels</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Link to="/about" className="text-gray-700 hover:text-primary transition-colors font-medium">
             About
           </Link>
