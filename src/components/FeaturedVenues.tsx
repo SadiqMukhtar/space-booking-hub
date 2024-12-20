@@ -11,65 +11,65 @@ import {
 const venues = [
   {
     id: 1,
-    name: "Sports Arena",
+    name: "Grand Sports Arena",
     type: "Sports Venue",
-    description: "Modern sports facility with multiple courts",
-    image: "https://images.unsplash.com/photo-1534158914592-062992fbe900",
+    location: "Downtown",
+    price: "$100/hour",
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
   },
   {
     id: 2,
-    name: "Event Space",
+    name: "The Royal Event Center",
     type: "Event Center",
-    description: "Perfect for celebrations and corporate events",
-    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3",
+    location: "Midtown",
+    price: "$500/day",
+    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833",
   },
   {
     id: 3,
-    name: "Luxury Venue",
+    name: "Luxury Hotel & Suites",
     type: "Hotel",
-    description: "Elegant spaces for memorable occasions",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+    location: "Uptown",
+    price: "$200/night",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742",
   },
 ];
 
 export const FeaturedVenues = () => {
   return (
-    <section className="py-24 bg-black text-white">
+    <section className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl md:text-7xl font-display font-bold text-center mb-4 uppercase">
+        <h2 className="text-4xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           Featured Venues
         </h2>
-        <p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto text-lg">
-          Discover extraordinary spaces for your next event
+        <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+          Discover our handpicked selection of premium venues for your next event
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {venues.map((venue) => (
-            <Card key={venue.id} className="bg-black border border-white/20 rounded-none overflow-hidden group">
+            <Card key={venue.id} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 border-0 bg-white/50 backdrop-blur-sm">
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
                   src={venue.image}
                   alt={venue.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
               </div>
               
-              <CardHeader className="border-t border-white/20">
-                <CardTitle className="text-2xl font-display uppercase">{venue.name}</CardTitle>
-                <CardDescription className="text-gray-400">{venue.type}</CardDescription>
+              <CardHeader>
+                <CardTitle className="text-xl font-semibold">{venue.name}</CardTitle>
+                <CardDescription className="text-gray-600">{venue.type} • {venue.location}</CardDescription>
               </CardHeader>
               
               <CardContent>
-                <p className="text-gray-300">
-                  {venue.description}
+                <p className="text-lg font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  {venue.price}
                 </p>
               </CardContent>
               
               <CardFooter>
-                <Button className="w-full bg-accent hover:bg-accent/90 rounded-none text-lg uppercase">
-                  Book Now
-                </Button>
+                <Button className="w-full bg-accent hover:bg-accent/90">Book Now</Button>
               </CardFooter>
             </Card>
           ))}
