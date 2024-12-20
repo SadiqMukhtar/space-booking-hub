@@ -29,8 +29,36 @@ export const Hero = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="container mx-auto px-4 pt-32 pb-20">
+    <div className="relative min-h-screen">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/70" />
+      </div>
+
+      {/* Search Bar Section */}
+      <div className="relative z-10 container mx-auto px-4 pt-28 pb-8">
+        <div className="max-w-xl mx-auto mb-16">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center border border-white/20">
+            <Input
+              type="text"
+              placeholder="Search for venues by name or location..."
+              className="border-0 focus-visible:ring-0 bg-transparent text-white placeholder:text-white/70"
+            />
+            <Button size="lg" className="ml-2 bg-accent hover:bg-accent/90">
+              <Search className="h-4 w-4 mr-2" />
+              Search
+            </Button>
+          </div>
+        </div>
+
+        {/* Hero Text */}
         <h1 className="text-5xl md:text-7xl font-bold mb-8 text-center text-white animate-fadeIn tracking-tight">
           Find Your Perfect Space
         </h1>
@@ -74,21 +102,6 @@ export const Hero = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Search Bar */}
-        <div className="max-w-xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center border border-white/20">
-            <Input
-              type="text"
-              placeholder="Search for venues by name or location..."
-              className="border-0 focus-visible:ring-0 bg-transparent text-white placeholder:text-white/70"
-            />
-            <Button size="lg" className="ml-2 bg-accent hover:bg-accent/90">
-              <Search className="h-4 w-4 mr-2" />
-              Search
-            </Button>
-          </div>
         </div>
       </div>
     </div>
