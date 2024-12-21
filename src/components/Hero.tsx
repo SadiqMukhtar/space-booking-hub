@@ -9,7 +9,7 @@ export const Hero = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1505236858219-8359eb29e329?q=80')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1552667466-07770ae110d0?q=80')",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}
@@ -19,18 +19,18 @@ export const Hero = () => {
 
       {/* Content Section */}
       <div className="relative z-10 container mx-auto px-4 pt-28 pb-8">
-        <SearchBar />
-
         {/* Hero Text */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-8 text-center text-white animate-fadeIn tracking-tight">
-          Find Your Perfect Space
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-center text-white animate-fadeIn tracking-tight">
+          Book Your Perfect Pitch
         </h1>
-        <p className="text-xl md:text-2xl mb-16 text-center text-gray-300 max-w-2xl mx-auto animate-fadeIn">
-          Book sports venues, event centers, and hotels with ease
+        <p className="text-xl md:text-2xl mb-12 text-center text-gray-300 max-w-2xl mx-auto animate-fadeIn">
+          Find and book indoor football fields for your team
         </p>
 
+        <SearchBar />
+
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {venueCategories.map((category) => (
             <CategoryCard
               key={category.title}
