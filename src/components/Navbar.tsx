@@ -12,8 +12,41 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gray-900/90 backdrop-blur-md z-50 border-b border-white/10">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link to="/" className="text-3xl font-bold text-white">
-          Space
+        <Link to="/" className="flex items-center gap-2">
+          <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-white"
+            >
+              <path
+                d="M12 2L2 7L12 12L22 7L12 2Z"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 17L12 22L22 17"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 12L12 17L22 12"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <div className="flex flex-col items-start">
+            <span className="text-2xl font-bold text-white">Space</span>
+            <span className="text-xs text-accent/90 -mt-1">Football Hub</span>
+          </div>
         </Link>
         
         <div className="hidden md:flex items-center space-x-10">
