@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const venues = [
   {
@@ -36,6 +37,12 @@ const venues = [
 ];
 
 export const FeaturedVenues = () => {
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    navigate('/venues');
+  };
+
   return (
     <section className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
@@ -69,7 +76,12 @@ export const FeaturedVenues = () => {
               </CardContent>
               
               <CardFooter>
-                <Button className="w-full bg-accent hover:bg-accent/90">Book Now</Button>
+                <Button 
+                  className="w-full bg-accent hover:bg-accent/90"
+                  onClick={handleBookNow}
+                >
+                  Book Now
+                </Button>
               </CardFooter>
             </Card>
           ))}

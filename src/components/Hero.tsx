@@ -2,13 +2,25 @@ import { SearchBar } from "@/features/venues/components/SearchBar";
 import { CategoryCard } from "@/features/venues/components/CategoryCard";
 import { FeaturedVenues } from "@/components/FeaturedVenues";
 import { Button } from "@/components/ui/button";
-import { Calendar, Users, MapPin } from "lucide-react";
+import { Calendar, Users, MapPin, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleQuickBook = () => {
+    // This would typically open a quick booking modal or redirect to a simplified booking form
+    toast.info("Quick booking feature coming soon!");
+  };
+
+  const handleBookNow = () => {
+    navigate('/venues');
+  };
+
   return (
     <>
       <div className="relative min-h-screen">
-        {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 z-0"
           style={{
@@ -20,9 +32,7 @@ export const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/70" />
         </div>
 
-        {/* Content Section */}
         <div className="relative z-10 container mx-auto px-4 pt-28 pb-8">
-          {/* Hero Text */}
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white animate-fadeIn tracking-tight">
               Book Your Perfect Indoor Football Pitch
@@ -30,6 +40,28 @@ export const Hero = () => {
             <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto animate-fadeIn">
               Find and book professional indoor football facilities for your team
             </p>
+            
+            {/* Adding Quick Book and Book Now buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                size="lg" 
+                variant="secondary" 
+                className="group"
+                onClick={handleQuickBook}
+              >
+                <Zap className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                Quick Book
+              </Button>
+              <Button 
+                size="lg" 
+                variant="default"
+                className="bg-accent hover:bg-accent/90"
+                onClick={handleBookNow}
+              >
+                Book Now
+              </Button>
+            </div>
+
             <div className="flex flex-wrap gap-4 justify-center text-gray-300 mb-8">
               <div className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
@@ -48,7 +80,6 @@ export const Hero = () => {
 
           <SearchBar />
 
-          {/* Featured Pitches Grid */}
           <div className="mt-16">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Popular Indoor Pitches</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -65,7 +96,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Features Section */}
       <div className="bg-white py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our Platform</h2>
