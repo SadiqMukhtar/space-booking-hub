@@ -16,23 +16,23 @@ interface CategoryCardProps {
 
 export const CategoryCard = ({ title, image, venues }: CategoryCardProps) => {
   return (
-    <div className="relative group transform transition-all duration-300 hover:scale-102">
-      <div className="relative h-[300px] rounded-xl overflow-hidden shadow-lg">
+    <div className="relative group transform transition-all duration-300 hover:scale-105">
+      <div className="relative h-[250px] rounded-xl overflow-hidden shadow-lg">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-2xl font-bold text-white">{title}</h3>
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-xl font-bold text-white">{title}</h3>
               <Badge variant="secondary" className="bg-green-500/20 text-green-300">
                 Available Now
               </Badge>
             </div>
-            <p className="text-sm text-gray-300 mb-4">
-              Professional indoor football pitch with high-quality turf and modern facilities
+            <p className="text-sm text-gray-300 mb-3">
+              Professional {title} with high-quality turf and modern facilities
             </p>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
