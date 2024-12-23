@@ -1,45 +1,39 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import VenueSearch from "@/components/VenueSearch";
 import VenueFilters, { VenueFilters as FilterTypes } from "@/components/VenueFilters";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { VenueCard } from "@/components/VenueCard";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
-interface Venue {
-  id: string;
-  name: string;
-  type: string;
-  priceRange: string;
-  description: string;
-  image: string;
-}
-
-const mockVenues: Venue[] = [
+const mockVenues = [
   {
     id: "1",
-    name: "Central Sports Complex",
-    type: "sports",
-    priceRange: "mid",
-    description: "Modern sports facility with multiple courts",
-    image: "/placeholder.svg",
+    name: "Central Indoor Arena",
+    location: "Downtown Sports Complex",
+    price: "$80/hour",
+    image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d",
+    availability: "Available",
   },
   {
     id: "2",
-    name: "Grand Event Center",
-    type: "event",
-    priceRange: "luxury",
-    description: "Elegant venue for special occasions",
-    image: "/placeholder.svg",
+    name: "Pro Football Center",
+    location: "Midtown",
+    price: "$95/hour",
+    image: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68",
+    availability: "Available",
   },
   {
     id: "3",
-    name: "Comfort Inn Hotel",
-    type: "hotel",
-    priceRange: "budget",
-    description: "Comfortable and affordable accommodation",
-    image: "/placeholder.svg",
+    name: "Elite Sports Hub",
+    location: "Westside",
+    price: "$75/hour",
+    image: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e",
+    availability: "Available",
   },
 ];
 
 const Venues = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filters, setFilters] = useState<FilterTypes>({
     type: "",
@@ -50,41 +44,37 @@ const Venues = () => {
     const matchesSearch = venue.name
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
-    const matchesType = !filters.type || venue.type === filters.type;
-    const matchesPriceRange =
-      !filters.priceRange || venue.priceRange === filters.priceRange;
+    const matchesType = !filters.type || true; // Implement actual filtering logic
+    const matchesPriceRange = !filters.priceRange || true; // Implement actual filtering logic
     return matchesSearch && matchesType && matchesPriceRange;
   });
+
+  const handleBook = (id: string) => {
+    toast.success("Booking feature coming soon!");
+    // Implement booking logic
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="space-y-6">
-        <VenueSearch onSearch={setSearchQuery} />
-        <VenueFilters onFilterChange={setFilters} />
+        <h1 className="text-3xl font-bold">Available Venues</h1>
+        
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="w-full md:w-2/3">
+            <VenueSearch onSearch={setSearchQuery} />
+          </div>
+          <div className="w-full md:w-1/3">
+            <VenueFilters onFilterChange={setFilters} />
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredVenues.map((venue) => (
-            <Card key={venue.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <img
-                  src={venue.image}
-                  alt={venue.name}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-                <CardTitle className="mt-4">{venue.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">{venue.description}</p>
-                <div className="flex justify-between items-center mt-4">
-                  <span className="capitalize text-sm font-medium">
-                    {venue.type}
-                  </span>
-                  <span className="capitalize text-sm text-gray-500">
-                    {venue.priceRange}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+            <VenueCard 
+              key={venue.id} 
+              venue={venue} 
+              onBook={handleBook}
+            />
           ))}
         </div>
       </div>
