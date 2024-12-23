@@ -16,7 +16,7 @@ export const SearchBar = () => {
         <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
         <Input
           type="text"
-          placeholder="Enter location..."
+          placeholder="Enter location to find pitches..."
           className="pl-10"
         />
       </div>
@@ -31,9 +31,9 @@ export const SearchBar = () => {
 
       <div className="w-full md:w-[180px]">
         <Select>
-          <SelectTrigger className="w-full">
+          <SelectTrigger>
             <Users className="h-4 w-4 mr-2" />
-            <SelectValue placeholder="Team Size" />
+            <SelectValue placeholder="Pitch Size" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="5">5-a-side</SelectItem>
@@ -47,7 +47,7 @@ export const SearchBar = () => {
         className="bg-accent hover:bg-accent/90 w-full md:w-auto"
       >
         <Search className="h-4 w-4 mr-2" />
-        Search Pitches
+        Find Pitches
       </Button>
     </div>
   );
